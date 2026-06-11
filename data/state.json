@@ -1,0 +1,47 @@
+{
+  "account": {
+    "cash": 25000.01,
+    "equity": 25000.01,
+    "dayPnl": 0.01,
+    "totalPnl": 0.01,
+    "riskPerTrade": 1.2,
+    "updatedAt": "2026-05-16T15:26:59.571Z"
+  },
+  "holdings": [],
+  "trades": [
+    {
+      "id": "9fca1b7e-b175-4ff3-b847-68cbb6536b80",
+      "date": "2026-05-16",
+      "symbol": "SPY",
+      "side": "BUY",
+      "entry": 0,
+      "exit": 0,
+      "size": 0,
+      "pnl": 0,
+      "fees": 0,
+      "notes": "",
+      "createdAt": "2026-05-16T15:26:59.571Z"
+    },
+    {
+      "id": "1267d30e-d079-492a-b0b6-c9b3cbc3f517",
+      "date": "2026-05-16",
+      "symbol": "SPY",
+      "side": "BUY",
+      "entry": 0,
+      "exit": 0,
+      "size": 1,
+      "pnl": 0.01,
+      "fees": 0,
+      "notes": "",
+      "createdAt": "2026-05-16T15:26:42.090Z"
+    }
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "NVDA",
+    "TSLA",
+    "AAPL",
+    "MSFT"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "memymoney",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Daily US stock strategy dashboard with trade journal and source analysis.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

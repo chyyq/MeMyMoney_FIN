@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Me My Money - 按长期策略定制的美股持仓推荐工作台">
+    <title>Me My Money</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Me My Money</p>
+          <h1>美股长期持仓策略工作台</h1>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="refreshButton" aria-label="刷新数据" title="刷新数据">
+            <span aria-hidden="true">↻</span>
+          </button>
+          <button id="holdingButton">记录持仓</button>
+          <button class="primary-button" id="recordButton">记录执行</button>
+        </div>
+      </header>
+
+      <section class="hero-grid" aria-label="组合策略摘要">
+        <article class="panel conclusion-panel">
+          <div class="panel-title">
+            <span class="status-dot"></span>
+            <span>组合策略结论</span>
+          </div>
+          <h2 id="conclusionText">正在生成组合策略...</h2>
+          <div class="decision-row">
+            <div>
+              <span class="metric-label">首页标的</span>
+              <strong id="primarySymbol">--</strong>
+            </div>
+            <div>
+              <span class="metric-label">动作</span>
+              <strong id="primaryAction">--</strong>
+            </div>
+            <div>
+              <span class="metric-label">组合评分</span>
+              <strong id="confidence">--</strong>
+            </div>
+          </div>
+          <div id="prioritySignal" class="priority-signal" hidden></div>
+          <p class="reason" id="primaryReason">等待数据源返回。</p>
+          <p class="position-insight" id="positionInsight">正在检查持仓状态。</p>
+          <div class="trade-plan">
+            <span>买入窗口 <b id="entryPrice">--</b></span>
+            <span>止损点 <b id="stopPrice">--</b></span>
+            <span>卖出窗口 <b id="targetPrice">--</b></span>
+            <span>风险预算 <b id="riskBudget">--</b></span>
+          </div>
+          <div id="strategyModules" class="module-grid"></div>
+        </article>
+
+        <article class="panel account-panel">
+          <div class="panel-title">账户概览</div>
+          <div class="account-value" id="equityValue">$--</div>
+          <div class="pnl-line">
+            <span id="dayPnl">日内 --</span>
+            <span id="totalPnl">累计 --</span>
+          </div>
+          <form id="accountForm" class="account-form">
+            <label>
+              总权益
+              <input name="equity" type="number" step="0.01" min="0" placeholder="25000">
+            </label>
+            <label>
+              现金
+              <input name="cash" type="number" step="0.01" min="0" placeholder="25000">
+            </label>
+            <label>
+              单笔风险 %
+              <input name="riskPerTrade" type="number" step="0.1" min="0" max="20" placeholder="1.2">
+            </label>
+            <button type="submit">更新账户</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel holdings-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">持仓管理</div>
+            <p class="muted">记录每只股票的数量与成本价，系统会自动估算市值、浮盈亏、实时涨跌、买卖窗口和止损点</p>
+          </div>
+          <div class="holding-summary">
+            <span>持仓 <b id="holdingCount">0 只</b></span>
+            <span>市值 <b id="holdingExposure">$--</b></span>
+            <span>浮盈亏 <b id="holdingPnl">$--</b></span>
+          </div>
+        </div>
+        <div id="holdingList" class="holding-list"></div>
+      </section>
+
+      <section class="workspace-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">定制持仓推荐</div>
+              <p class="muted">按长期策略资金结构、实时价格窗口、持仓偏离和来源优先级排序</p>
+            </div>
+          </div>
+          <div id="candidates" class="candidate-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">执行记录</div>
+              <p class="muted">记录保存在当前浏览器，刷新或重新部署不会丢失本机数据</p>
+            </div>
+          </div>
+          <div id="tradeList" class="trade-list"></div>
+        </section>
+      </section>
+
+      <section class="panel source-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">分析来源</div>
+            <p class="muted">优先读取实时 API，其次读取 GitHub Action 每日快照；来源链接会直接跳转原文</p>
+          </div>
+          <div id="providerStatus" class="provider-status"></div>
+        </div>
+        <div id="sources" class="source-list"></div>
+      </section>
+    </main>
+
+    <dialog id="recordDialog">
+      <form id="tradeForm" method="dialog" class="dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Trade Journal</p>
+            <h2>记录今日执行结果</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-dialog="recordDialog" aria-label="关闭" title="关闭">×</button>
+        </div>
+        <div class="form-grid">
+          <label>
+            日期
+            <input name="date" type="date" required>
+          </label>
+          <label>
+            标的
+            <input name="symbol" type="text" value="SPY" required>
+          </label>
+          <label>
+            方向
+            <select name="side">
+              <option value="BUY">买入</option>
+              <option value="SELL">卖出/做空</option>
+            </select>
+          </label>
+          <label>
+            数量
+            <input name="size" type="number" step="1" min="0" required>
+          </label>
+          <label>
+            入场价
+            <input name="entry" type="number" step="0.01" min="0">
+          </label>
+          <label>
+            出场价
+            <input name="exit" type="number" step="0.01" min="0">
+          </label>
+          <label>
+            盈亏
+            <input name="pnl" type="number" step="0.01" required>
+          </label>
+          <label>
+            手续费
+            <input name="fees" type="number" step="0.01" min="0" value="0">
+          </label>
+        </div>
+        <label>
+          复盘备注
+          <textarea name="notes" rows="4" placeholder="记录执行偏差、进出场原因、情绪状态或下次要避免的问题"></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" data-close-dialog="recordDialog">取消</button>
+          <button class="primary-button" value="default" type="submit">保存记录</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="holdingDialog">
+      <form id="holdingForm" method="dialog" class="dialog-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Portfolio</p>
+            <h2>记录或更新持仓</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-dialog="holdingDialog" aria-label="关闭" title="关闭">×</button>
+        </div>
+        <div class="form-grid">
+          <label>
+            标的
+            <input name="symbol" type="text" value="NVDA" required>
+          </label>
+          <label>
+            持仓股数
+            <input name="shares" type="number" step="0.0001" min="0" required>
+          </label>
+          <label>
+            平均成本
+            <input name="averageCost" type="number" step="0.01" min="0" required>
+          </label>
+        </div>
+        <label>
+          持仓逻辑
+          <textarea name="thesis" rows="4" placeholder="记录买入理由、计划持有时间、需要观察的业绩或技术位"></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" data-close-dialog="holdingDialog">取消</button>
+          <button class="primary-button" value="default" type="submit">保存持仓</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

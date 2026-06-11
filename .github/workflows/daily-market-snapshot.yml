@@ -1,0 +1,44 @@
+name: Daily market snapshot
+
+on:
+  schedule:
+    - cron: "40 13 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-market-snapshot
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate market snapshot
+        env:
+          WATCHLIST: NVDA,MSFT,AMD,ARM,PLTR,TSLA,SOXL,TQQQ,TSLL,QQQ,SPY
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          SERENITY_X_ACCOUNT: ${{ secrets.SERENITY_X_ACCOUNT }}
+          X_ACCOUNTS: ${{ secrets.X_ACCOUNTS }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_QUERIES: ${{ secrets.YOUTUBE_QUERIES }}
+        run: node scripts/generate-snapshot.mjs
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/market-snapshot.json public/data/market-snapshot.json
+          git diff --cached --quiet || git commit -m "chore: update market snapshot"
+          git push

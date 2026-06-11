@@ -1,0 +1,148 @@
+{
+  "asOf": "2026-06-11T16:10:18.003Z",
+  "quotes": [
+    {
+      "symbol": "NVDA",
+      "price": 143.62,
+      "change": 1.84,
+      "changePercent": 1.28,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "MSFT",
+      "price": 487.12,
+      "change": 1.51,
+      "changePercent": 0.31,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "AMD",
+      "price": 166.48,
+      "change": 1.43,
+      "changePercent": 0.86,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "ARM",
+      "price": 134.8,
+      "change": -1.62,
+      "changePercent": -1.2,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "PLTR",
+      "price": 122.35,
+      "change": 2.57,
+      "changePercent": 2.1,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "TSLA",
+      "price": 182.14,
+      "change": -1.49,
+      "changePercent": -0.82,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "SOXL",
+      "price": 24.36,
+      "change": 0.71,
+      "changePercent": 2.9,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "TQQQ",
+      "price": 77.42,
+      "change": 1.24,
+      "changePercent": 1.6,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "TSLL",
+      "price": 9.18,
+      "change": -0.16,
+      "changePercent": -1.7,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "QQQ",
+      "price": 547.88,
+      "change": 3.94,
+      "changePercent": 0.72,
+      "source": "Sample fallback"
+    },
+    {
+      "symbol": "SPY",
+      "price": 634.21,
+      "change": 2.79,
+      "changePercent": 0.44,
+      "source": "Sample fallback"
+    }
+  ],
+  "sources": [
+    {
+      "type": "x",
+      "provider": "X · Serenity sample",
+      "author": "Serenity",
+      "handle": "Serenity",
+      "title": "Serenity watch: NVDA remains the first AI trend name before adding beta.",
+      "summary": "Sample priority signal. Configure X_BEARER_TOKEN and SERENITY_X_ACCOUNT to use Serenity's newest X posts.",
+      "url": "https://x.com/search?q=Serenity%20%24NVDA%20%24PLTR%20%24TSLA&src=typed_query&f=live",
+      "publishedAt": "2026-06-11T16:10:17.982Z",
+      "sentiment": 1,
+      "priority": 120,
+      "symbols": [
+        "NVDA",
+        "PLTR",
+        "TSLA"
+      ]
+    },
+    {
+      "type": "youtube",
+      "provider": "YouTube sample",
+      "title": "Morning market setup: index levels, earnings risk, and AI leaders",
+      "summary": "Video search fallback for daily market context.",
+      "url": "https://www.youtube.com/results?search_query=stock+market+analysis+today+AI+NVDA",
+      "publishedAt": "2026-06-11T16:10:17.982Z",
+      "sentiment": 0.5,
+      "symbols": [
+        "NVDA",
+        "QQQ",
+        "TQQQ"
+      ],
+      "priority": 0
+    },
+    {
+      "type": "news",
+      "provider": "Yahoo Finance sample",
+      "title": "NVDA and QQQ show stronger AI-led momentum",
+      "summary": "Large-cap technology names lead the watchlist while traders wait for fresh macro data.",
+      "url": "https://finance.yahoo.com/quote/NVDA",
+      "publishedAt": "2026-06-11T16:10:17.981Z",
+      "sentiment": 1,
+      "symbols": [
+        "NVDA",
+        "QQQ"
+      ],
+      "priority": 0
+    },
+    {
+      "type": "news",
+      "provider": "Yahoo Finance sample",
+      "title": "TSLA remains volatile after mixed analyst commentary",
+      "summary": "Options flow points to a wider intraday range and higher risk of false breakouts.",
+      "url": "https://finance.yahoo.com/quote/TSLA",
+      "publishedAt": "2026-06-11T16:10:17.981Z",
+      "sentiment": -0.5,
+      "symbols": [
+        "TSLA",
+        "TSLL"
+      ],
+      "priority": 0
+    }
+  ],
+  "providers": {
+    "market": "fallback: fetch failed",
+    "sources": "Yahoo Finance sample / X · Serenity sample / YouTube sample"
+  }
+}
