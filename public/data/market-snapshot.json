@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-06-24T15:56:27.455Z",
+  "asOf": "2026-06-25T16:06:47.092Z",
   "quotes": [
     {
       "symbol": "NVDA",
@@ -88,7 +88,7 @@
       "title": "Serenity watch: NVDA remains the first AI trend name before adding beta.",
       "summary": "Sample priority signal. Configure X_BEARER_TOKEN and SERENITY_X_ACCOUNT to use Serenity's newest X posts.",
       "url": "https://x.com/search?q=Serenity%20%24NVDA%20%24PLTR%20%24TSLA&src=typed_query&f=live",
-      "publishedAt": "2026-06-24T15:56:27.399Z",
+      "publishedAt": "2026-06-25T16:06:46.970Z",
       "sentiment": 1,
       "priority": 120,
       "symbols": [
@@ -103,7 +103,7 @@
       "title": "Morning market setup: index levels, earnings risk, and AI leaders",
       "summary": "Video search fallback for daily market context.",
       "url": "https://www.youtube.com/results?search_query=stock+market+analysis+today+AI+NVDA",
-      "publishedAt": "2026-06-24T15:56:27.399Z",
+      "publishedAt": "2026-06-25T16:06:46.970Z",
       "sentiment": 0.5,
       "symbols": [
         "NVDA",
@@ -118,7 +118,7 @@
       "title": "NVDA and QQQ show stronger AI-led momentum",
       "summary": "Large-cap technology names lead the watchlist while traders wait for fresh macro data.",
       "url": "https://finance.yahoo.com/quote/NVDA",
-      "publishedAt": "2026-06-24T15:56:27.398Z",
+      "publishedAt": "2026-06-25T16:06:46.969Z",
       "sentiment": 1,
       "symbols": [
         "NVDA",
@@ -132,7 +132,7 @@
       "title": "TSLA remains volatile after mixed analyst commentary",
       "summary": "Options flow points to a wider intraday range and higher risk of false breakouts.",
       "url": "https://finance.yahoo.com/quote/TSLA",
-      "publishedAt": "2026-06-24T15:56:27.398Z",
+      "publishedAt": "2026-06-25T16:06:46.969Z",
       "sentiment": -0.5,
       "symbols": [
         "TSLA",
