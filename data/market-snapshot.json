@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-01T16:09:12.767Z",
+  "asOf": "2026-07-02T15:54:29.326Z",
   "quotes": [
     {
       "symbol": "NVDA",
@@ -88,7 +88,7 @@
       "title": "Serenity watch: NVDA remains the first AI trend name before adding beta.",
       "summary": "Sample priority signal. Configure X_BEARER_TOKEN and SERENITY_X_ACCOUNT to use Serenity's newest X posts.",
       "url": "https://x.com/search?q=Serenity%20%24NVDA%20%24PLTR%20%24TSLA&src=typed_query&f=live",
-      "publishedAt": "2026-07-01T16:09:12.668Z",
+      "publishedAt": "2026-07-02T15:54:29.225Z",
       "sentiment": 1,
       "priority": 120,
       "symbols": [
@@ -98,12 +98,27 @@
       ]
     },
     {
+      "type": "youtube",
+      "provider": "YouTube sample",
+      "title": "Morning market setup: index levels, earnings risk, and AI leaders",
+      "summary": "Video search fallback for daily market context.",
+      "url": "https://www.youtube.com/results?search_query=stock+market+analysis+today+AI+NVDA",
+      "publishedAt": "2026-07-02T15:54:29.225Z",
+      "sentiment": 0.5,
+      "symbols": [
+        "NVDA",
+        "QQQ",
+        "TQQQ"
+      ],
+      "priority": 0
+    },
+    {
       "type": "news",
       "provider": "Yahoo Finance sample",
       "title": "NVDA and QQQ show stronger AI-led momentum",
       "summary": "Large-cap technology names lead the watchlist while traders wait for fresh macro data.",
       "url": "https://finance.yahoo.com/quote/NVDA",
-      "publishedAt": "2026-07-01T16:09:12.668Z",
+      "publishedAt": "2026-07-02T15:54:29.224Z",
       "sentiment": 1,
       "symbols": [
         "NVDA",
@@ -117,26 +132,11 @@
       "title": "TSLA remains volatile after mixed analyst commentary",
       "summary": "Options flow points to a wider intraday range and higher risk of false breakouts.",
       "url": "https://finance.yahoo.com/quote/TSLA",
-      "publishedAt": "2026-07-01T16:09:12.668Z",
+      "publishedAt": "2026-07-02T15:54:29.224Z",
       "sentiment": -0.5,
       "symbols": [
         "TSLA",
         "TSLL"
-      ],
-      "priority": 0
-    },
-    {
-      "type": "youtube",
-      "provider": "YouTube sample",
-      "title": "Morning market setup: index levels, earnings risk, and AI leaders",
-      "summary": "Video search fallback for daily market context.",
-      "url": "https://www.youtube.com/results?search_query=stock+market+analysis+today+AI+NVDA",
-      "publishedAt": "2026-07-01T16:09:12.668Z",
-      "sentiment": 0.5,
-      "symbols": [
-        "NVDA",
-        "QQQ",
-        "TQQQ"
       ],
       "priority": 0
     }
